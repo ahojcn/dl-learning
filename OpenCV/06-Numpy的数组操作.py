@@ -16,6 +16,9 @@ def access_pixels(img):
                 pv = img[i, j, k]
                 img[i, j, k] = 255 - pv
 
+    # 上面这个循环所做的工作用 api 就可以搞定（像素取反）
+    # cv.bitwise_not(img)  # 速度极快，因为是 C++/C 封装的库
+
     cv.imshow('demo', img)
 
 
@@ -29,6 +32,15 @@ def create_img():
     img = np.zeros([400, 400, 1], np.uint8)  # zeros 初始化了一个三维数组，并且里面都是 0
     img[:, :, 0] = np.ones([400, 400]) * 127  # ones 给对应的坐标赋值为 1，如果 * 了 127 就是赋值127呗。
     cv.imshow('new image', img)
+
+    # ones 创建一个二维数组
+    m1 = np.ones([3, 3], np.float32)
+    # m1.fill(111.233)
+    print(m1)
+
+    # 把 m1 变成 1 行 9 列的，但是数据是不可以丢掉的，只是改变了在空间的形状
+    m2 = m1.reshape([1, 9])
+    print(m2)
 
 
 if __name__ == '__main__':
