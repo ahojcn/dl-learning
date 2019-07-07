@@ -26,12 +26,12 @@ def get_img_info(img):
 if __name__ == '__main__':
     img = cv.imread('01image.JPG', 1)  # 加载图片
 
-    cv.imshow('01image', img)  # 展示图片
-    get_img_info(img)  # 获取图片信息
+    # cv.imshow('01image', img)  # 展示图片
+    # get_img_info(img)  # 获取图片信息
 
-    gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)  # bgr 转 灰度图
-    cv.imwrite('./05-imageResult.png', gray_img)  # 把这个灰度图写到文件
-    # video_demo()
+    # gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)  # bgr 转 灰度图
+    # cv.imwrite('./05-imageResult.png', gray_img)  # 把这个灰度图写到文件
+    video_demo()
 
     cv.waitKey(0)
     cv.destroyAllWindows()

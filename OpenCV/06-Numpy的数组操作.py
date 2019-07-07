@@ -23,15 +23,16 @@ def access_pixels(img):
 
 
 def create_img():
-    # img = np.zeros([400, 400, 3], np.uint8)
-    # img[:, :, 0] = np.ones([400, 400]) * 255  # 上色，给 b 通道赋值，400 * 400个像素均为 255（蓝色）
-    # img[:, :, 1] = np.ones([400, 400]) * 255  # 与上同理
-    # cv.imshow('new image', img)
+    # 生成一个多通道图片
+    img = np.zeros([400, 400, 3], np.uint8)
+    img[:, :, 0] = np.ones([400, 400]) * 255  # 上色，给 b 通道赋值，400 * 400个像素均为 255（蓝色）
+    img[:, :, 1] = np.ones([400, 400]) * 255  # 与上同理
+    cv.imshow('new image0', img)
 
     # 单通道图片（单通道一般为灰度图片）
     img = np.zeros([400, 400, 1], np.uint8)  # zeros 初始化了一个三维数组，并且里面都是 0
     img[:, :, 0] = np.ones([400, 400]) * 127  # ones 给对应的坐标赋值为 1，如果 * 了 127 就是赋值127呗。
-    cv.imshow('new image', img)
+    cv.imshow('new image1', img)
 
     # ones 创建一个二维数组
     m1 = np.ones([3, 3], np.float32)
