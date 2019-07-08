@@ -14,7 +14,9 @@ def extrace_obj_demo():
         lower_hsv = np.array([35, 43, 46])
         upper_hsv = np.array([77, 255, 255])
         mask = cv.inRange(hsv, lowerb=lower_hsv, upperb=upper_hsv)
+        dst = cv.bitwise_and(frame, frame, mask=mask)
         cv.imshow('video', frame)
+        cv.imshow('dst', dst)
         cv.imshow('mask', mask)
 
         c = cv.waitKey(40)
@@ -43,20 +45,20 @@ if __name__ == '__main__':
     # cv.imshow('bgr', img)
     # color_space_demo(img)
 
-    # extrace_obj_demo()
+    extrace_obj_demo()
 
     # 通道分离和合并
-    cv.imshow('bgr', img)
-    b, g, r = cv.split(img)
-    cv.imshow('blue', b)
-    cv.imshow('green', g)
-    cv.imshow('red', r)
-
-    img[:, :, 2] = 0  # red
-    cv.imshow('change image', img)
-
-    img = cv.merge([b, g, r])
-    cv.imshow('merge', img)
+    # cv.imshow('bgr', img)
+    # b, g, r = cv.split(img)
+    # cv.imshow('blue', b)
+    # cv.imshow('green', g)
+    # cv.imshow('red', r)
+    #
+    # img[:, :, 2] = 0  # red
+    # cv.imshow('change image', img)
+    #
+    # img = cv.merge([b, g, r])
+    # cv.imshow('merge', img)
 
     cv.waitKey(0)
     cv.destroyAllWindows()
