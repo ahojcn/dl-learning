@@ -40,26 +40,33 @@ def other_demo(m1, m2):
 
 
 def logic_demo(m1, m2):
-    # dst = cv.bitwise_and(m1, m2)  # 与运算，做遮罩
-    # dst = cv.bitwise_or(m1, m2)  # 或运算
+    dst = cv.bitwise_and(m1, m2)  # 与运算，做遮罩
+    cv.imshow('and', dst)
+    dst = cv.bitwise_or(m1, m2)  # 或运算
+    cv.imshow('or', dst)
     dst = cv.bitwise_not(m2)  # 非操作，就是 255 - px
-    cv.imshow('logic and demo', dst)
+    cv.imshow('not', dst)
+    dst = cv.bitwise_xor(m1, m2)  # 亦或运算
+    cv.imshow('xor', dst)
 
 
 def contrast_brightness_demo(image, c, b):
     """c 对比度；b 亮度"""
-    h, w, ch = image.shape
+    h, w, ch = image.shape  # 获取shape的数值，height和width、通道
+
+    # 新建全零图片数组src2,将height和width，类型设置为原图片的通道类型(色素全为零，输出为全黑图片)
     blank = np.zeros([h, w, ch], image.dtype)
+
     dst = cv.addWeighted(image, c, blank, 1-c, b)
     cv.imshow('contrast_brightness_demo', dst)
 
 
 if __name__ == '__main__':
-    # img1 = cv.imread('LinuxLogo.jpg')
-    # img2 = cv.imread('WindowsLogo.jpg')
+    img1 = cv.imread('LinuxLogo.jpg')
+    img2 = cv.imread('WindowsLogo.jpg')
     # print('img1' + str(img1.shape))
     # print('img2' + str(img2.shape))
-
+    #
     # cv.namedWindow('img1', cv.WINDOW_AUTOSIZE)
     # cv.imshow('img1', img1)
     # cv.imshow('img2', img2)
